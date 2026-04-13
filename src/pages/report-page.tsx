@@ -81,7 +81,7 @@ export default function ReportPage() {
               <p>GSD 参数：{state.modelConfig.gsd} cm/px</p>
               <p>操作人员：{user?.displayName || "—"}</p>
               {id && state.exportedToReport[id] && (
-                <p className="mt-1 text-green-600">报告导入：{new Date(state.exportedToReport[id]).toLocaleString("zh-CN")}</p>
+                <p className="mt-1 text-green-600">报告导入：{new Date(state.exportedToReport[id] as string).toLocaleString("zh-CN")}</p>
               )}
             </div>
           </div>

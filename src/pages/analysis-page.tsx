@@ -354,7 +354,7 @@ export default function AnalysisPage() {
                       张分析图像。可前往报告页查看或导出 PDF。
                       {state.exportedToReport[id!] && (
                         <span className="block mt-1 text-green-500 font-mono">
-                          导入时间：{new Date(state.exportedToReport[id!]).toLocaleString("zh-CN")}
+                          导入时间：{new Date(state.exportedToReport[id!] as string).toLocaleString("zh-CN")}
                         </span>
                       )}
                     </div>
