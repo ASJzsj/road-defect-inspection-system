@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #1E3A5F;
+  --color-primary-light: #2D5F8B;
+  --color-accent: #E8873A;
+  --color-bg: #F1F5F9;
+  --color-bg-dark: #0F172A;
+  --color-text: #1E293B;
+  --color-text-muted: #64748B;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Noto Sans SC', 'Noto Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* 打印样式 - 多页 PDF 支持 */
+@media print {
+  @page {
+    size: A4;
+    margin: 15mm 12mm;
+  }
+
+  html, body {
+    background: white !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
+  }
+
+  .no-print { display: none !important; }
+  .print-only { display: block !important; }
+  .sidebar { display: none !important; }
+  .top-bar { display: none !important; }
+  .print-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* 报告主体白色卡片去除圆角和阴影 */
+  .report-body {
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+  }
+
+  /* 报告头部避免分页断开 */
+  .report-header {
+    page-break-after: auto;
+  }
+
+  /* 各章节前可分页 */
+  .report-section {
+    page-break-inside: auto;
+    page-break-before: auto;
+  }
+
+  /* 统计卡片避免分页断开 */
+  .report-stat-cards {
+    page-break-inside: avoid;
+  }
+
+  /* 图表区域避免分页断开 */
+  .report-chart {
+    page-break-inside: avoid;
+  }
+
+  /* 病害表格允许自动分页，每页重复表头 */
+  .report-table {
+    page-break-before: auto;
+  }
+  .report-table thead {
+    display: table-header-group;
+  }
+  .report-table tr {
+    page-break-inside: avoid;
+  }
+
+  /* 签署区紧跟在最后一页表格之后 */
+  .report-signatures {
+    page-break-inside: avoid;
+  }
+
+  /* 布局容器打印适配：解除高度和溢出限制 */
+  .print-layout-wrapper {
+    height: auto !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+  .print-layout-main {
+    height: auto !important;
+    overflow: visible !important;
+    display: block !important;
+  }
+
+  /* 防止内容溢出页面 */
+  .page-content-area {
+    overflow: visible !important;
+    max-height: none !important;
+  }
+}
+
+/* 过渡动画 */
+.page-enter {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
